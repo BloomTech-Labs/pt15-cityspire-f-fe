@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../../common';
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
 
@@ -11,8 +10,11 @@ function RenderHomePage(props) {
   return (
     <Layout className="layout">
       <Header>
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+        <div />
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['0']}>
+          <Menu.Item key="0">
+            Hi {userInfo.name} Welcome to CitySpire!
+          </Menu.Item>
           <Menu.Item key="1">
             <Link to="/profile-list">Favorites</Link>
           </Menu.Item>
