@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 import Geocode from 'react-geocode';
 
-const API_KEY = 'AIzaSyB7aczQf7D78F24GP6POiHN64KNAY1VbwU';
+const API_KEY = '';
 
 function Map() {
   Geocode.setApiKey(API_KEY);
