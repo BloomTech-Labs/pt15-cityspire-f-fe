@@ -1,6 +1,0 @@
-REACT_APP_CLIENT_ID=0oa18is3355K1yP5C4x7
-REACT_APP_OKTA_ISSUER_URI="https://auth.lambdalabs.dev/oauth2/default"
-REACT_APP_API_URI=http://localhost:8005
-REACT_APP_MAPBOX_TOKEN="pk.
-eyJ1IjoiY3NzYzEiLCJhIjoiY2trZGZ5bW5lMGFuNTJvcWI5dHdkbWk0aCJ9.
-mtWYM___Cm9xlxe25i18ww" 
