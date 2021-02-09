@@ -16,13 +16,7 @@ const initialState = {
 function DataViz(props) {
   const [data, setData] = useState(initialState);
   const [figure, setFigure] = useState(null);
-  const [viewport, setViewport] = useState({
-    latitude: 45.4211,
-    longitude: -75.6903,
-    width: '65vw',
-    height: '65vw',
-    zoom: 4,
-  });
+
   useEffect(() => {
     function fetchDSData() {
       getDSData(props.url, props.authState)
@@ -36,7 +30,17 @@ function DataViz(props) {
     fetchDSData();
   }, [props.url, props.authState]);
 
-  return <div></div>;
+  return (
+    <Plot
+      className="DataViz"
+      data={data.data}
+      layout={data.layout}
+      frames={data.frames}
+      config={data.config}
+      onInitialized={figure => setFigure(figure)}
+      onUpdate={figure => setFigure(figure)}
+    />
+  );
 }
 
 export default DataViz;
