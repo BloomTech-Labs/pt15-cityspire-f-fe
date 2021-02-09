@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 import { getDSData } from '../../../api';
-import ReactMapGL from 'react-map-gl';
 
 const initialState = {
   data: [],
@@ -37,18 +36,7 @@ function DataViz(props) {
     fetchDSData();
   }, [props.url, props.authState]);
 
-  return (
-    <ReactMapGL
-      {...viewport}
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      onViewportChange={viewport => {
-        setViewport(viewport);
-      }}
-      mapStyle="mapbox://styles/cssc1/ckkg67a3000eo17s4xx1ocnvr"
-    >
-      *markers here*
-    </ReactMapGL>
-  );
+  return <div></div>;
 }
 
 export default DataViz;

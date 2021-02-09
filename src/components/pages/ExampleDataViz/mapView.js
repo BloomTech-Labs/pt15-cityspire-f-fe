@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 import Geocode from 'react-geocode';
 
-const API_KEY = '';
+const API_KEY = process.env.REACT_APP_API_KEY; // Google Geocode key
+const MAP_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN; // Mapbox token
 
 function Map() {
   Geocode.setApiKey(API_KEY);
@@ -12,7 +13,7 @@ function Map() {
     longitude: -103.771556,
     width: '75vw',
     height: '75vw',
-    zoom: 5,
+    zoom: 10,
   });
   const [search, setSearch] = useState('');
 
@@ -39,21 +40,19 @@ function Map() {
         <input
           name="search"
           value={search}
-          placeholder="*CHOOSE*"
+          placeholder=""
           onChange={handleChange}
         />
         <button type="submit">Search!</button>
       </form>
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        mapboxApiAccessToken={MAP_TOKEN}
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
         mapStyle="mapbox://styles/cssc1/ckkg67a3000eo17s4xx1ocnvr"
-      >
-        *MARKERS HERE*
-      </ReactMapGL>
+      ></ReactMapGL>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
-
+import Map from '../ExampleDataViz/mapView';
 const { Header, Content, Footer } = Layout;
 
 function RenderHomePage(props) {
@@ -30,7 +30,7 @@ function RenderHomePage(props) {
         <div className="site-layout-content">
           <div>
             <p>This is where we will put Search component</p>
-            <p>This is where we will put map component</p>
+            <Map />
           </div>
         </div>
       </Content>
