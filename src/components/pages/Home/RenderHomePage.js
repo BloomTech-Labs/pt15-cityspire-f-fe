@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
 import Map from '../ExampleDataViz/mapView';
-import CityInfo from '../ExampleDataViz/CityInfo';
+
 const { Header, Content, Footer } = Layout;
 
 function RenderHomePage(props) {
@@ -31,7 +31,6 @@ function RenderHomePage(props) {
         <div className="site-layout-content">
           <div>
             <Map />
-            <CityInfo city="Orlando" state="Florida" />
           </div>
         </div>
       </Content>
