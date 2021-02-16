@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
 import Map from '../ExampleDataViz/mapView';
+import CityInfo from '../ExampleDataViz/CityInfo';
 const { Header, Content, Footer } = Layout;
 
 function RenderHomePage(props) {
@@ -29,8 +30,8 @@ function RenderHomePage(props) {
       <Content style={{ padding: '0 50px' }}>
         <div className="site-layout-content">
           <div>
-            <p>This is where we will put Search component</p>
             <Map />
+            <CityInfo city="Orlando" state="Florida" />
           </div>
         </div>
       </Content>
