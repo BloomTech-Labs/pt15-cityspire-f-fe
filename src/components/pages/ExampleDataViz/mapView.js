@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 import Geocode from 'react-geocode';
+import CityInfo from './CityInfo';
 
 const API_KEY = process.env.REACT_APP_API_KEY; // Google Geocode key
 const MAP_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN; // Mapbox token
@@ -16,6 +17,8 @@ function Map() {
     zoom: 10,
   });
   const [search, setSearch] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
 
   const handleChange = e => {
     setSearch(e.target.value);
@@ -25,7 +28,10 @@ function Map() {
     Geocode.fromAddress(`${search}`).then(
       res => {
         const { lat, lng } = res.results[0].geometry.location;
-        console.log(lat, lng);
+        const cityname = res.results[0].address_components[0].long_name;
+        setCity(cityname);
+        const statename = res.results[0].address_components[2].long_name;
+        setState(statename);
         setViewport({ ...viewport, latitude: lat, longitude: lng });
       },
       error => {
@@ -34,6 +40,8 @@ function Map() {
     );
     setSearch('');
   };
+  console.log(city, state);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -53,6 +61,7 @@ function Map() {
         }}
         mapStyle="mapbox://styles/cssc1/ckkg67a3000eo17s4xx1ocnvr"
       ></ReactMapGL>
+      <CityInfo city="Orlando" state="Florida" />
     </div>
   );
 }
