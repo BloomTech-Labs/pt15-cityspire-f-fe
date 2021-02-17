@@ -22,18 +22,6 @@ function Map() {
   const [state, setState] = useState('');
   const [info, setInfo] = useState({});
 
-  const getInfo = (city, state) => {
-    axios
-      .post(
-        `http://cityspire-f-ds.us-east-1.elasticbeanstalk.com/predict?city=${city}&state=${state}`
-      )
-      .then(res => {
-        const cityInfo = res.data;
-        setInfo(cityInfo);
-      })
-      .catch(error => console.log(error));
-  };
-
   const handleChange = e => {
     setSearch(e.target.value);
   };
@@ -52,10 +40,21 @@ function Map() {
         console.log(error);
       }
     );
-    getInfo(city, state);
     setSearch('');
   };
   console.log(city, state);
+
+  useEffect(() => {
+    axios
+      .post(
+        `http://cityspire-f-ds.us-east-1.elasticbeanstalk.com/predict?city=${city}&state=${state}`
+      )
+      .then(res => {
+        const cityInfo = res.data;
+        setInfo(cityInfo);
+      })
+      .catch(error => console.log(error));
+  }, [city, state]);
 
   return (
     <div>
