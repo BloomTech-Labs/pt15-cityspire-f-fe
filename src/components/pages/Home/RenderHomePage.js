@@ -8,6 +8,7 @@ const { Header, Content, Footer } = Layout;
 
 function RenderHomePage(props) {
   const { userInfo, authService } = props;
+  console.log('user info', userInfo);
   return (
     <Layout className="layout">
       <Header>

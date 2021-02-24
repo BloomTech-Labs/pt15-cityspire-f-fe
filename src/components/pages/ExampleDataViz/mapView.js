@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ReactMapGL from 'react-map-gl';
 import Geocode from 'react-geocode';
 import CityInfo from './CityInfo';
@@ -19,6 +20,7 @@ function Map() {
   const [search, setSearch] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
+  const [info, setInfo] = useState({});
 
   const handleChange = e => {
     setSearch(e.target.value);
@@ -42,6 +44,18 @@ function Map() {
   };
   console.log(city, state);
 
+  useEffect(() => {
+    axios
+      .post(
+        `http://cityspire-f-ds.us-east-1.elasticbeanstalk.com/predict?city=${city}&state=${state}`
+      )
+      .then(res => {
+        const cityInfo = res.data;
+        setInfo(cityInfo);
+      })
+      .catch(error => console.log(error));
+  }, [city, state]);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -61,7 +75,7 @@ function Map() {
         }}
         mapStyle="mapbox://styles/cssc1/ckkg67a3000eo17s4xx1ocnvr"
       ></ReactMapGL>
-      <CityInfo city="Orlando" state="Florida" />
+      <CityInfo city={city} state={state} cityInfo={info} />
     </div>
   );
 }
